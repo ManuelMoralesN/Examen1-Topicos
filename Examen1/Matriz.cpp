@@ -2,56 +2,46 @@
 
 using namespace std;
 
-const int FILAS = 3;
-const int COLUMNAS = 3;
+const int TAMANIO_MATRIZ = 3;
 
-void leerMatriz(int matriz[][COLUMNAS]) {
-    cout << "Ingrese los elementos de la matriz " << FILAS << "x" << COLUMNAS << ":\n";
-    for (int i = 0; i < FILAS; ++i) {
-        for (int j = 0; j < COLUMNAS; ++j) {
+void leerYMostrarMatriz(int matriz[][TAMANIO_MATRIZ], const string& mensaje) {
+    cout << mensaje << " " << TAMANIO_MATRIZ << "x" << TAMANIO_MATRIZ << ":\n";
+    for (int i = 0; i < TAMANIO_MATRIZ; ++i) {
+        for (int j = 0; j < TAMANIO_MATRIZ; ++j) {
             cout << "Elemento [" << i << "][" << j << "]: ";
             cin >> matriz[i][j];
-        }
-    }
-}
-
-void mostrarMatriz(int matriz[][COLUMNAS]) {
-    cout << "La matriz ingresada es:\n";
-    for (int i = 0; i < FILAS; ++i) {
-        for (int j = 0; j < COLUMNAS; ++j) {
             cout << matriz[i][j] << " ";
         }
         cout << "\n";
     }
 }
 
-void traspuesta(int matriz[][COLUMNAS], int traspuestaMatriz[][FILAS]) {
-    for (int i = 0; i < FILAS; ++i) {
-        for (int j = 0; j < COLUMNAS; ++j) {
+void traspuesta(int matriz[][TAMANIO_MATRIZ], int traspuestaMatriz[][TAMANIO_MATRIZ]) {
+    for (int i = 0; i < TAMANIO_MATRIZ; ++i) {
+        for (int j = 0; j < TAMANIO_MATRIZ; ++j) {
             traspuestaMatriz[j][i] = matriz[i][j];
         }
     }
 }
 
-void mostrarTraspuesta(int traspuestaMatriz[][FILAS]) {
-    cout << "La matriz traspuesta es:\n";
-    for (int i = 0; i < COLUMNAS; ++i) {
-        for (int j = 0; j < FILAS; ++j) {
-            cout << traspuestaMatriz[i][j] << " ";
+void mostrarMatriz(int matriz[][TAMANIO_MATRIZ], const string& mensaje) {
+    cout << mensaje << " " << TAMANIO_MATRIZ << "x" << TAMANIO_MATRIZ << ":\n";
+    for (int i = 0; i < TAMANIO_MATRIZ; ++i) {
+        for (int j = 0; j < TAMANIO_MATRIZ; ++j) {
+            cout << matriz[i][j] << " ";
         }
         cout << "\n";
     }
 }
 
 int main() {
-    int matriz[FILAS][COLUMNAS];
-    int traspuestaMatriz[COLUMNAS][FILAS];
+    int matriz[TAMANIO_MATRIZ][TAMANIO_MATRIZ];
+    int traspuestaMatriz[TAMANIO_MATRIZ][TAMANIO_MATRIZ];
 
-    leerMatriz(matriz);
-    mostrarMatriz(matriz);
+    leerYMostrarMatriz(matriz, "Ingrese los elementos de la matriz");
 
     traspuesta(matriz, traspuestaMatriz);
-    mostrarTraspuesta(traspuestaMatriz);
+    mostrarMatriz(traspuestaMatriz, "La matriz traspuesta es:");
 
     return 0;
 }
